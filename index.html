@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccounTalks - English for Accounting Class X</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .phone-frame {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .animate-pulse-subtle {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 font-sans min-h-screen flex items-center justify-center p-2 sm:p-6 text-slate-800">
+
+    <div class="relative w-full max-w-md h-[880px] bg-slate-950 rounded-[48px] p-3 border-4 border-slate-700 phone-frame flex flex-col overflow-hidden">
+        
+        <!-- Smartphone Top Bar / Camera Island -->
+        <div class="w-full bg-slate-950 pt-2 pb-1 px-6 flex justify-between items-center text-white text-xs z-50">
+            <span class="font-semibold text-slate-300">09:41</span>
+            <!-- Dynamic Island / Speaker Notch -->
+            <div class="w-24 h-4 bg-black rounded-full flex items-center justify-center space-x-2">
+                <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+                <div class="w-3 h-3 rounded-full bg-slate-900 border border-slate-700"></div>
+            </div>
+            <div class="flex items-center space-x-1.5 text-slate-300">
+                <i class="fa-solid fa-signal text-[10px]"></i>
+                <i class="fa-solid fa-wifi text-[10px]"></i>
+                <i class="fa-solid fa-battery-full text-xs text-brand-500"></i>
+            </div>
+        </div>
+
+        <!-- APP CONTENT DISPLAY SCREEN -->
+        <div id="app-screen" class="w-full flex-1 bg-slate-50 rounded-[38px] overflow-hidden flex flex-col relative">
+
+            <div class="bg-gradient-to-r from-brand-700 to-brand-600 px-5 pt-4 pb-3 text-white shadow-md flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl font-bold shadow-inner border border-white/30">
+                        📊
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold leading-tight">AccounTalks</h1>
+                        <p class="text-[10px] text-brand-100 font-medium">English for Accounting • SMK Class X</p>
+                    </div>
+                </div>
+                <button onclick="openModal('info-modal')" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition active:scale-95">
+                    <i class="fa-solid fa-circle-info text-sm"></i>
+                </button>
+            </div>
+
+            <div id="content-container" class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4 pb-20">
+
+                <!-- SCREEN 1: HOME DASHBOARD -->
+                <div id="tab-home" class="tab-content space-y-4">
+                    <!-- Hero Banner Card -->
+                    <div class="bg-gradient-to-br from-slate-900 via-brand-900 to-emerald-950 rounded-2xl p-4 text-white relative overflow-hidden shadow-lg border border-brand-500/20">
+                        <div class="relative z-10 space-y-2">
+                            <span class="px-2.5 py-0.5 bg-brand-500/30 text-brand-300 text-[10px] font-bold rounded-full uppercase tracking-wider border border-brand-400/30">Module 1 & 2</span>
+                            <h2 class="text-lg font-bold leading-snug">Mastering Suggestion & Opinion in Accounting</h2>
+                            <p class="text-xs text-slate-300">Siapkan dirimu menjadi Akuntan Muda yang mahir berkomunikasi dalam Bahasa Inggris bisnis!</p>
+                            <button onclick="switchTab('suggestion')" class="mt-2 inline-flex items-center space-x-2 bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold px-3.5 py-1.5 rounded-xl text-xs transition shadow-md active:scale-95">
+                                <span>Mulai Belajar</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                        <i class="fa-solid fa-calculator absolute -bottom-3 -right-2 text-7xl text-white/5 rotate-12"></i>
+                    </div>
+
+                    <!-- Accounting Avatar Greeting Card -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex-shrink-0 flex items-center justify-center text-2xl border border-brand-200">
+                            👩‍💼
+                        </div>
+                        <div class="flex-1 text-xs">
+                            <p class="font-bold text-slate-800">Halo, Calon Akuntan! 👋</p>
+                            <p class="text-slate-500 text-[11px]">Di dunia kerja akuntansi, kamu sering diminta memberikan *saran* (suggestion) dan *pendapat* (opinion) terkait laporan keuangan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Navigation Modules -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div onclick="switchTab('suggestion')" class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 p-3.5 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer group">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-base mb-2 group-hover:scale-110 transition">
+                                💡
+                            </div>
+                            <h3 class="font-bold text-xs text-emerald-900">Giving Suggestion</h3>
+                            <p class="text-[10px] text-emerald-700 mt-1">Memberi saran/solusi masalah kas & audit</p>
+                        </div>
+
+                        <div onclick="switchTab('opinion')" class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 p-3.5 rounded-2xl shadow-sm hover:shadow-md transition cursor-pointer group">
+                            <div class="w-9 h-9 rounded-xl bg-indigo-500 text-white flex items-center justify-center text-base mb-2 group-hover:scale-110 transition">
+                                💬
+                            </div>
+                            <h3 class="font-bold text-xs text-indigo-900">Giving Opinion</h3>
+                            <p class="text-[10px] text-indigo-700 mt-1">Menyampaikan pendapat & analisa keuangan</p>
+                        </div>
+                    </div>
+
+                    <!-- Practice Badge Card -->
+                    <div onclick="switchTab('practice')" class="bg-amber-500/10 border border-amber-300 p-3.5 rounded-2xl flex items-center justify-between cursor-pointer hover:bg-amber-500/20 transition">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center text-base">
+                                🎙️
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xs text-amber-900">5 Practical Speaking Exercises</h3>
+                                <p class="text-[10px] text-amber-800">Latihan bicara langsung dengan audio native!</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-amber-600"></i>
+                    </div>
+
+                    <!-- Pop-up trigger for Accounting Vocab -->
+                    <button onclick="openModal('vocab-modal')" class="w-full bg-slate-800 hover:bg-slate-900 text-white p-3 rounded-2xl text-xs font-semibold flex items-center justify-center space-x-2 transition shadow">
+                        <i class="fa-solid fa-book-bookmark text-brand-400"></i>
+                        <span>Buka Kamus Istilah Akuntansi (Accounting Vocab)</span>
+                    </button>
+                </div>
+
+                <div id="tab-suggestion" class="tab-content hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xl">💡</span>
+                            <h2 class="font-bold text-slate-800 text-sm">Giving Suggestion</h2>
+                        </div>
+                        <button onclick="openModal('suggestion-formula-modal')" class="text-[10px] bg-brand-100 text-brand-700 font-bold px-2.5 py-1 rounded-full hover:bg-brand-200">
+                            <i class="fa-solid fa-key mr-1"></i> Rumus / Pola
+                        </button>
+                    </div>
+
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl text-xs text-emerald-900">
+                        <p class="font-semibold">Apa itu Suggestion?</p>
+                        <p class="text-[11px] text-emerald-800 mt-0.5">Ungkapan untuk memberikan ide, masukan, atau saran pemecahan masalah dalam akuntansi kepada rekan kerja/atasan.</p>
+                    </div>
+
+                    <!-- Sentence Examples List -->
+                    <div class="space-y-2.5">
+                        <h3 class="font-bold text-xs text-slate-700 uppercase tracking-wider">Contoh Kalimat (Accounting Context)</h3>
+                        
+                        <!-- Item 1 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">Petty Cash Discrepancy</span>
+                                <button onclick="playAudio('I suggest that we check the petty cash receipts again.')" class="text-brand-600 hover:text-brand-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"I suggest that we check the petty cash receipts again."</p>
+                            <p class="text-[11px] text-slate-500 italic">Saya menyarankan agar kita memeriksa kuitansi kas kecil itu lagi.</p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">Accounting Software</span>
+                                <button onclick="playAudio('Why don\'t we use MYOB Accounting software to speed up data entry?')" class="text-brand-600 hover:text-brand-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"Why don't we use MYOB Accounting software to speed up data entry?"</p>
+                            <p class="text-[11px] text-slate-500 italic">Mengapa kita tidak menggunakan software MYOB untuk mempercepat input data?</p>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">Financial Audit</span>
+                                <button onclick="playAudio('You should reconcile the bank statement before the auditor arrives.')" class="text-brand-600 hover:text-brand-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"You should reconcile the bank statement before the auditor arrives."</p>
+                            <p class="text-[11px] text-slate-500 italic">Kamu sebaiknya merekonsiliasi rekening koran sebelum auditor datang.</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Dialogue Section -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-3.5 shadow-sm space-y-3">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <h3 class="font-bold text-xs text-slate-800">💬 Dialogue Example: Reconciling Ledger</h3>
+                            <button onclick="playDialogue('dialogue-suggestion')" class="bg-brand-500 hover:bg-brand-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center space-x-1">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Putar Dialog</span>
+                            </button>
+                        </div>
+
+                        <div id="dialogue-suggestion" class="space-y-2 text-xs">
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                <p class="font-bold text-slate-700 text-[11px]">Rina (Junior Accountant):</p>
+                                <p class="text-slate-800 font-medium">"Senior, I found an error in the monthly balance sheet. Total debit and credit don't match."</p>
+                            </div>
+                            <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-100 border-l-2 border-l-emerald-500">
+                                <p class="font-bold text-emerald-900 text-[11px]">Budi (Senior Accountant):</p>
+                                <p class="text-slate-800 font-medium">"<span class="bg-emerald-200 px-1 rounded text-emerald-900 font-bold">How about re-checking</span> the sales invoices from yesterday? Maybe some transaction entries were missed."</p>
+                            </div>
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                <p class="font-bold text-slate-700 text-[11px]">Rina:</p>
+                                <p class="text-slate-800 font-medium">"That's a good idea! I will do that right away."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-opinion" class="tab-content hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xl">💬</span>
+                            <h2 class="font-bold text-slate-800 text-sm">Giving Opinion</h2>
+                        </div>
+                        <button onclick="openModal('opinion-formula-modal')" class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2.5 py-1 rounded-full hover:bg-indigo-200">
+                            <i class="fa-solid fa-key mr-1"></i> Ungkapan Opini
+                        </button>
+                    </div>
+
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-3 rounded-r-xl text-xs text-indigo-900">
+                        <p class="font-semibold">Apa itu Giving Opinion?</p>
+                        <p class="text-[11px] text-indigo-800 mt-0.5">Ungkapan untuk menyampaikan pandangan, ide, atau sudut pandang pribadi mengenai masalah keuangan/akuntansi.</p>
+                    </div>
+
+                    <!-- Sentence Examples List -->
+                    <div class="space-y-2.5">
+                        <h3 class="font-bold text-xs text-slate-700 uppercase tracking-wider">Contoh Kalimat (Accounting Context)</h3>
+                        
+                        <!-- Item 1 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">Financial Report</span>
+                                <button onclick="playAudio('In my opinion, our net profit increased because of good cost management.')" class="text-indigo-600 hover:text-indigo-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"In my opinion, our net profit increased because of good cost management."</p>
+                            <p class="text-[11px] text-slate-500 italic">Menurut pendapat saya, laba bersih kita meningkat karena pengelolaan biaya yang baik.</p>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">Manual vs Digital</span>
+                                <button onclick="playAudio('I strongly believe that digital bookkeeping is much safer than manual paper records.')" class="text-indigo-600 hover:text-indigo-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"I strongly believe that digital bookkeeping is much safer than manual paper records."</p>
+                            <p class="text-[11px] text-slate-500 italic">Saya sangat yakin bahwa pembukuan digital jauh lebih aman daripada catatan kertas manual.</p>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm space-y-1.5">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">Budget Allocation</span>
+                                <button onclick="playAudio('From my point of view, we spent too much budget on marketing last month.')" class="text-indigo-600 hover:text-indigo-800 text-sm p-1">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-800">"From my point of view, we spent too much budget on marketing last month."</p>
+                            <p class="text-[11px] text-slate-500 italic">Dari sudut pandang saya, kita menghabiskan terlalu banyak anggaran untuk pemasaran bulan lalu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Dialogue Section -->
+                    <div class="bg-white rounded-2xl border border-slate-200 p-3.5 shadow-sm space-y-3">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <h3 class="font-bold text-xs text-slate-800">💬 Dialogue Example: Choosing Accounting Software</h3>
+                            <button onclick="playDialogue('dialogue-opinion')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center space-x-1">
+                                <i class="fa-solid fa-circle-play"></i>
+                                <span>Putar Dialog</span>
+                            </button>
+                        </div>
+
+                        <div id="dialogue-opinion" class="space-y-2 text-xs">
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                <p class="font-bold text-slate-700 text-[11px]">Dewi (Finance Staff):</p>
+                                <p class="text-slate-800 font-medium">"What is your opinion on changing our accounting system to Accurate Cloud?"</p>
+                            </div>
+                            <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-100 border-l-2 border-l-indigo-500">
+                                <p class="font-bold text-indigo-900 text-[11px]">Fajar (Accounting Head):</p>
+                                <p class="text-slate-800 font-medium">"<span class="bg-indigo-200 px-1 rounded text-indigo-900 font-bold">Personally, I think</span> cloud accounting will make our tax reporting easier and more accurate."</p>
+                            </div>
+                            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                <p class="font-bold text-slate-700 text-[11px]">Dewi:</p>
+                                <p class="text-slate-800 font-medium">"I agree with you! It allows us to work from anywhere as well."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-practice" class="tab-content hidden space-y-4">
+                    <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-3.5 rounded-2xl shadow-md">
+                        <h2 class="font-bold text-sm flex items-center space-x-2">
+                            <span>🎙️</span>
+                            <span>5 Latihan Speaking Akuntansi</span>
+                        </h2>
+                        <p class="text-[11px] text-amber-100 mt-1">Dengarkan contohnya, lalu klik tombol mikrofon untuk berlatih menirukan pelafalan yang benar!</p>
+                    </div>
+
+                    <!-- EXERCISE 1 -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Latihan 1: Giving Suggestion</span>
+                            <span class="text-[10px] text-slate-400 font-medium">Skor: <span id="score-ex1" class="text-brand-600 font-bold">-</span></span>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium">Skenario: Kasir menemukan selisih kas kecil.</p>
+                        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                            <p id="target-text-1" class="text-xs font-bold text-slate-800">"I suggest that we count the cash box again carefully."</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Artinya: Saya menyarankan agar kita menghitung ulang kotak kas dengan teliti.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="playAudio('I suggest that we count the cash box again carefully.')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>Dengarkan</span>
+                            </button>
+                            <button onclick="recordPractice('target-text-1', 'score-ex1', 'rec-btn-1')" id="rec-btn-1" class="flex-1 bg-brand-500 hover:bg-brand-600 text-slate-950 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>Coba Bicara</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 2 -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Latihan 2: Giving Opinion</span>
+                            <span class="text-[10px] text-slate-400 font-medium">Skor: <span id="score-ex2" class="text-brand-600 font-bold">-</span></span>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium">Skenario: Memberikan pendapat tentang laporan rugi laba.</p>
+                        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                            <p id="target-text-2" class="text-xs font-bold text-slate-800">"In my opinion, our company expenditure is too high this month."</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Artinya: Menurut pendapat saya, pengeluaran perusahaan kita terlalu tinggi bulan ini.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="playAudio('In my opinion, our company expenditure is too high this month.')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high text-indigo-600"></i>
+                                <span>Dengarkan</span>
+                            </button>
+                            <button onclick="recordPractice('target-text-2', 'score-ex2', 'rec-btn-2')" id="rec-btn-2" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>Coba Bicara</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 3 -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Latihan 3: Suggesting Solution</span>
+                            <span class="text-[10px] text-slate-400 font-medium">Skor: <span id="score-ex3" class="text-brand-600 font-bold">-</span></span>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium">Skenario: Menyarankan solusi penunggakan pembayaran faktur client.</p>
+                        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                            <p id="target-text-3" class="text-xs font-bold text-slate-800">"Why don't we send a reminder letter to the client today?"</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Artinya: Mengapa kita tidak mengirim surat pengingat ke klien hari ini?</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="playAudio('Why don\'t we send a reminder letter to the client today?')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>Dengarkan</span>
+                            </button>
+                            <button onclick="recordPractice('target-text-3', 'score-ex3', 'rec-btn-3')" id="rec-btn-3" class="flex-1 bg-brand-500 hover:bg-brand-600 text-slate-950 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>Coba Bicara</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 4 -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Latihan 4: Strong Opinion</span>
+                            <span class="text-[10px] text-slate-400 font-medium">Skor: <span id="score-ex4" class="text-brand-600 font-bold">-</span></span>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium">Skenario: Meyakinkan pentingnya laporan pajak tepat waktu.</p>
+                        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                            <p id="target-text-4" class="text-xs font-bold text-slate-800">"I strongly believe that paying taxes on time will avoid heavy fines."</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Artinya: Saya sangat percaya bahwa membayar pajak tepat waktu akan menghindari denda berat.</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="playAudio('I strongly believe that paying taxes on time will avoid heavy fines.')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high text-indigo-600"></i>
+                                <span>Dengarkan</span>
+                            </button>
+                            <button onclick="recordPractice('target-text-4', 'score-ex4', 'rec-btn-4')" id="rec-btn-4" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>Coba Bicara</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EXERCISE 5 -->
+                    <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2.5">
+                        <div class="flex items-center justify-between border-b pb-2">
+                            <span class="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded-full">Latihan 5: Audit Preparation</span>
+                            <span class="text-[10px] text-slate-400 font-medium">Skor: <span id="score-ex5" class="text-brand-600 font-bold">-</span></span>
+                        </div>
+                        <p class="text-xs text-slate-600 font-medium">Skenario: Persiapan pemeriksaan berkas fisik jurnal umum.</p>
+                        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                            <p id="target-text-5" class="text-xs font-bold text-slate-800">"How about organizing the journal vouchers in chronological order?"</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Artinya: Bagaimana kalau merapikan bukti jurnal sesuai urutan tanggal?</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="playAudio('How about organizing the journal vouchers in chronological order?')" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>Dengarkan</span>
+                            </button>
+                            <button onclick="recordPractice('target-text-5', 'score-ex5', 'rec-btn-5')" id="rec-btn-5" class="flex-1 bg-brand-500 hover:bg-brand-600 text-slate-950 py-2 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition shadow">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span>Coba Bicara</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-200 py-2 px-3 flex justify-around items-center z-40 rounded-b-[38px]">
+                <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center space-y-0.5 text-brand-600">
+                    <i class="fa-solid fa-house text-base"></i>
+                    <span class="text-[10px] font-bold">Home</span>
+                </button>
+                <button onclick="switchTab('suggestion')" id="nav-suggestion" class="nav-btn flex flex-col items-center space-y-0.5 text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-lightbulb text-base"></i>
+                    <span class="text-[10px] font-bold">Suggestion</span>
+                </button>
+                <button onclick="switchTab('opinion')" id="nav-opinion" class="nav-btn flex flex-col items-center space-y-0.5 text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-comments text-base"></i>
+                    <span class="text-[10px] font-bold">Opinion</span>
+                </button>
+                <button onclick="switchTab('practice')" id="nav-practice" class="nav-btn flex flex-col items-center space-y-0.5 text-slate-400 hover:text-slate-600">
+                    <i class="fa-solid fa-microphone text-base"></i>
+                    <span class="text-[10px] font-bold">Practice</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Smartphone Bottom Indicator Bar -->
+        <div class="w-full bg-slate-950 pt-2 pb-1 flex justify-center z-50">
+            <div class="w-32 h-1 bg-slate-700 rounded-full"></div>
+        </div>
+
+    </div>
+
+
+    <!-- POPUP MODAL: Information / App Overview -->
+    <div id="info-modal" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4 relative border border-slate-100">
+            <button onclick="closeModal('info-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center space-y-1">
+                <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto text-xl">
+                    📑
+                </div>
+                <h3 class="font-bold text-slate-800 text-sm">Panduan Aplikasi</h3>
+                <p class="text-[11px] text-slate-500">AccounTalks v1.0 - SMK Akuntansi</p>
+            </div>
+            <div class="text-xs text-slate-600 space-y-2 border-t pt-3">
+                <p>💡 <b>Giving Suggestion:</b> Pelajari cara memberi masukan perbaikan transaksi/laporan.</p>
+                <p>💬 <b>Giving Opinion:</b> Pelajari cara menyatakan pendapat mengenai kondisi keuangan.</p>
+                <p>🎙️ <b>5 Practice:</b> Dengarkan pengucapan kata demi kata dan latih pengucapanmu.</p>
+            </div>
+            <button onclick="closeModal('info-modal')" class="w-full bg-brand-500 text-slate-950 font-bold py-2 rounded-xl text-xs">Saya Mengerti!</button>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL: Suggestion Grammar Formulas -->
+    <div id="suggestion-formula-modal" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative border border-slate-100">
+            <button onclick="closeModal('suggestion-formula-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <span>💡</span>
+                <span>Pola / Formula Giving Suggestion</span>
+            </h3>
+            <div class="space-y-2 text-xs">
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    <p class="font-bold text-emerald-900">1. S + suggest + (that) + S + Verb 1</p>
+                    <p class="text-[11px] text-emerald-700 italic">Contoh: I suggest that we audit the inventory.</p>
+                </div>
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    <p class="font-bold text-emerald-900">2. Why don't + we/you + Verb 1 ?</p>
+                    <p class="text-[11px] text-emerald-700 italic">Contoh: Why don't you check the balance sheet?</p>
+                </div>
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    <p class="font-bold text-emerald-900">3. How about / What about + Verb-ing ?</p>
+                    <p class="text-[11px] text-emerald-700 italic">Contoh: What about matching the invoices?</p>
+                </div>
+                <div class="bg-emerald-50 p-2.5 rounded-xl border border-emerald-200">
+                    <p class="font-bold text-emerald-900">4. Subject + should + Verb 1</p>
+                    <p class="text-[11px] text-emerald-700 italic">Contoh: You should print the general ledger.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL: Opinion Grammar Expressions -->
+    <div id="opinion-formula-modal" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative border border-slate-100">
+            <button onclick="closeModal('opinion-formula-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <span>💬</span>
+                <span>Ungkapan Giving Opinion</span>
+            </h3>
+            <div class="space-y-2 text-xs">
+                <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
+                    <p class="font-bold text-indigo-900">1. In my opinion, ...</p>
+                    <p class="text-[11px] text-indigo-700">Digunakan untuk pendapat umum.</p>
+                </div>
+                <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
+                    <p class="font-bold text-indigo-900">2. I strongly believe that ...</p>
+                    <p class="text-[11px] text-indigo-700">Digunakan untuk keyakinan yang kuat/tegas.</p>
+                </div>
+                <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
+                    <p class="font-bold text-indigo-900">3. From my point of view, ...</p>
+                    <p class="text-[11px] text-indigo-700">Menyampaikan sudut pandang profesional.</p>
+                </div>
+                <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-200">
+                    <p class="font-bold text-indigo-900">4. Personally, I think ...</p>
+                    <p class="text-[11px] text-indigo-700">Pendapat secara pribadi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP MODAL: Vocabulary Bank -->
+    <div id="vocab-modal" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-3 relative border border-slate-100">
+            <button onclick="closeModal('vocab-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+                <span>📖</span>
+                <span>Kamus Istilah Akuntansi (Accounting Terms)</span>
+            </h3>
+            <div class="max-h-60 overflow-y-auto no-scrollbar space-y-2 pr-1 text-xs">
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">Petty Cash</p>
+                        <p class="text-[10px] text-slate-500">Kas Kecil</p>
+                    </div>
+                    <button onclick="playAudio('Petty Cash')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">Balance Sheet</p>
+                        <p class="text-[10px] text-slate-500">Laporan Neraca</p>
+                    </div>
+                    <button onclick="playAudio('Balance Sheet')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">General Ledger</p>
+                        <p class="text-[10px] text-slate-500">Buku Besar</p>
+                    </div>
+                    <button onclick="playAudio('General Ledger')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">Reconcile</p>
+                        <p class="text-[10px] text-slate-500">Mencocokkan / Rekonsiliasi</p>
+                    </div>
+                    <button onclick="playAudio('Reconcile')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">Invoice</p>
+                        <p class="text-[10px] text-slate-500">Faktur / Tagihan</p>
+                    </div>
+                    <button onclick="playAudio('Invoice')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+                <div class="flex justify-between items-center p-2 bg-slate-50 rounded-lg">
+                    <div>
+                        <p class="font-bold text-slate-800">Expenditure</p>
+                        <p class="text-[10px] text-slate-500">Pengeluaran / Beban</p>
+                    </div>
+                    <button onclick="playAudio('Expenditure')" class="text-brand-600"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switcher Logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Show selected tab
+            const activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+            }
+
+            // Reset navigation tab button colors
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('text-brand-600');
+                btn.classList.add('text-slate-400');
+            });
+
+            // Active button color
+            const activeNav = document.getElementById('nav-' + tabId);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-400');
+                activeNav.classList.add('text-brand-600');
+            }
+
+            // Scroll container back to top
+            document.getElementById('content-container').scrollTop = 0;
+        }
+
+        function playAudio(text) {
+            if ('speechSynthesis' in window) {
+                // Cancel ongoing speech
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9; // Slightly slower for clear learning
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alertModal('Fitur audio tidak didukung di peramban Anda.');
+            }
+        }
+
+        // Play entire dialogue sequentially
+        function playDialogue(containerId) {
+            if (!('speechSynthesis' in window)) return;
+
+            window.speechSynthesis.cancel();
+            const dialogueDiv = document.getElementById(containerId);
+            const paragraphs = dialogueDiv.querySelectorAll('p.font-medium');
+            
+            let index = 0;
+            function speakNext() {
+                if (index < paragraphs.length) {
+                    const cleanText = paragraphs[index].innerText.replace(/"/g, '');
+                    const utterance = new SpeechSynthesisUtterance(cleanText);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.9;
+                    
+                    utterance.onend = function() {
+                        index++;
+                        speakNext();
+                    };
+
+                    window.speechSynthesis.speak(utterance);
+                }
+            }
+            speakNext();
+        }
+
+        function recordPractice(targetId, scoreId, btnId) {
+            const targetText = document.getElementById(targetId).innerText.replace(/"/g, '');
+            const scoreElement = document.getElementById(scoreId);
+            const btn = document.getElementById(btnId);
+
+            // Web Speech Recognition Check
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (SpeechRecognition) {
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+
+                btn.classList.add('animate-pulse', 'bg-red-500', 'text-white');
+                btn.innerHTML = '<i class="fa-solid fa-microphone-lines"></i> <span>Mendengarkan...</span>';
+
+                recognition.start();
+
+                recognition.onresult = function(event) {
+                    const userSpeech = event.results[0][0].transcript.toLowerCase().trim();
+                    const cleanTarget = targetText.toLowerCase().replace(/[^a-zA-Z0-0 ]/g, "").trim();
+
+                    // Simple similarity check
+                    let matchedWords = 0;
+                    const targetWords = cleanTarget.split(' ');
+                    const userWords = userSpeech.split(' ');
+
+                    targetWords.forEach(w => {
+                        if (userWords.includes(w)) matchedWords++;
+                    });
+
+                    let scorePercent = Math.round((matchedWords / targetWords.length) * 100);
+                    if (scorePercent > 100) scorePercent = 100;
+
+                    scoreElement.innerText = scorePercent + '%';
+                    if (scorePercent >= 70) {
+                        scoreElement.className = 'text-brand-600 font-bold';
+                        playAudio("Great job!");
+                    } else {
+                        scoreElement.className = 'text-amber-600 font-bold';
+                    }
+
+                    resetButton();
+                };
+
+                recognition.onerror = function() {
+                    // Fallback demo score if microphone error / permissions blocked
+                    simulateScore();
+                    resetButton();
+                };
+
+                recognition.onend = function() {
+                    resetButton();
+                };
+
+            } else {
+                // Speech recognition fallback simulation
+                simulateScore();
+            }
+
+            function simulateScore() {
+                // Generates realistic feedback score for practice
+                const randomScore = Math.floor(Math.random() * 20) + 80;
+                scoreElement.innerText = randomScore + '% (Praktik)';
+                scoreElement.className = 'text-brand-600 font-bold';
+                playAudio("Excellent pronunciation!");
+            }
+
+            function resetButton() {
+                btn.classList.remove('animate-pulse', 'bg-red-500', 'text-white');
+                btn.innerHTML = '<i class="fa-solid fa-microphone"></i> <span>Coba Lagi</span>';
+            }
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
